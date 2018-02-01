@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   <h2>Admin</h2>
+    <h2 class="page-header">Latest Articles</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+             <th scope="col">#</th>
+            <th scope="col">Article</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <th scope="row">{{ article.id }}</th>
+                <td>{{ article.name }}</td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.createdDate|date('F j,Y,g:i a') }}</td>
+                <td>
+                    <a href="/blog/details/{{ article.id }}" class ="btn btn-success">read</a>
+                    <a href="/blog/edit/{{ article.id }}" class ="btn btn-default">edit</a>
+                    <a href="/blog/delete/{{ article.id }}" class ="btn btn-danger">delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{%  endblock %}

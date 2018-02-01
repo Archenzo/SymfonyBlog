@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2 class="page-header">Latest Articles</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th scope="col">Article</th>
+            <th scope="col">Description</th>
+           <!-- <th scope="col">Date</th>-->
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+        <tr>
+
+            <td>{{ article.name }}</td>
+            <td>{{ article.description }}</td>
+            <td>
+                <a href="/blog/details/{{ article.id }}" class ="btn btn-success">read</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{%  endblock %}

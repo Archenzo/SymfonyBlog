@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <h2 class="page-header">{{ article.name }}</h2>
+    <h4>Date Published : {{ article.createdDate|date('F j,Y,g:i a')}}</h4>
+    <hr>
+    <p>
+        {{ article.post }}
+    </p>
+    <hr>
+    <h3 class="page-header">Comments</h3>
+    {{ form_start(form)}}
+    {{ form_widget(form)}}
+    {{ form_end(form)}}
+    <hr>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Comment</th>
+            <!-- <th scope="col">Date</th>-->
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+
+                <td>{{ comment.readername }}</td>
+                <td>{{ comment.readercomment}}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{%  endblock %}
