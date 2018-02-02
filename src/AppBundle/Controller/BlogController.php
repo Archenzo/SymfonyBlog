@@ -150,7 +150,7 @@ class BlogController extends Controller
             ->getForm();
 
         $form->handleRequest($request);
-       // $articleid =$this->getDoctrine()->getRepository('AppBundle:Blog')->find($id)->__toString();
+
 
         $articleid =$article->getId();
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,8 +171,9 @@ class BlogController extends Controller
 
             $this->addFlash('notice', 'Comment Added');
 
-           // return $this->redirectToRoute('post_details');
-            return $this->redirectToRoute($this->generateUrl('post_details',array('id'=>$id)));
+           return $this->redirectToRoute('post_details',array('id' => $id));
+           
+
         }
 
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comments')->findBy(['articleid' => $id]);
